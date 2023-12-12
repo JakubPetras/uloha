@@ -22,10 +22,14 @@ export const AppBar = ({ title }: HeaderProps) => {
 					background: colorBgContainer,
 					justifyContent: "start",
 					alignItems: "center",
+					boxShadow: "0 6px 5px 2px rgba(0,0,0,0.1)",
 				}}
 			>
 				<div>
-					<Title level={2} style={{ color: "#003E39", margin: "0px" }}>
+					<Title
+						level={3}
+						style={{ color: "#305651", margin: "0px", fontWeight: "bold" }}
+					>
 						{title}
 					</Title>
 				</div>

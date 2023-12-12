@@ -1,11 +1,12 @@
 "use client";
 
+import { Layout } from "antd";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { Layout, theme } from "antd";
 
 import StyledComponentsRegistry from "@providers/AntdRegistry";
 import { AppBar } from "@/widgets/AppBar";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,14 @@ export default function RootLayout({
 				<StyledComponentsRegistry>
 					<Layout>
 						<AppBar title={appTitle} />
-						<Content>{children}</Content>
+						<Content
+							style={{
+								padding: "2rem 7rem",
+								minHeight: "calc(100vh - 64px)",
+							}}
+						>
+							{children}
+						</Content>
 					</Layout>
 				</StyledComponentsRegistry>
 			</body>
