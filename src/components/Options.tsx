@@ -22,7 +22,7 @@ export const Options = () => {
 				<DownloadOutlined style={iconStyle} />
 			</Button>
 			<Button size={btnSize} style={btnStyle}>
-				Notes&nbsp;<Text style={{ color: "grey" }}>(3)</Text>
+				Notes&nbsp;<Text style={{ color: "grey", fontSize: "1rem" }}>(3)</Text>
 				<FileTextOutlined style={iconStyle} />
 			</Button>
 			<Button
