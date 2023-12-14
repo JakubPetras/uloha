@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Column } from "@ant-design/plots";
 import { ChartData, transformDataForChart } from "./utils";
+import { ColumnConfig } from "@ant-design/plots";
+import React from "react";
+
+// import of Column directly from library, thrown issue document not found
+let ColumnComp: (props: ColumnConfig) => React.JSX.Element;
+
+if (typeof window !== "undefined") {
+	const { Column } = require("@ant-design/plots");
+	ColumnComp = Column;
+}
 
 export const ColumnChart = () => {
 	const [data, setData] = useState<ChartData[]>([]);
@@ -30,5 +39,5 @@ export const ColumnChart = () => {
 		},
 	};
 
-	return data.length === 0 ? "Loading..." : <Column {...config} />;
+	return data.length === 0 ? "Loading..." : <ColumnComp {...config} />;
 };

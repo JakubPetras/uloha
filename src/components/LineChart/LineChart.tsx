@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Line } from "@ant-design/plots";
+import { LineConfig } from "@ant-design/plots";
 import { LineChartData, transformDataForChart } from "./utils";
+
+// import of Line directly from library, thrown issue document not found
+let LineComp: (props: LineConfig) => React.JSX.Element;
+
+if (typeof window !== "undefined") {
+	const { Line } = require("@ant-design/plots");
+	LineComp = Line;
+}
 
 export const LineChart = () => {
 	const [data, setData] = useState<LineChartData[]>([]);
@@ -29,5 +37,5 @@ export const LineChart = () => {
 		},
 	};
 
-	return data.length === 0 ? "Loading..." : <Line {...config} />;
+	return data.length === 0 ? "Loading..." : <LineComp {...config} />;
 };
